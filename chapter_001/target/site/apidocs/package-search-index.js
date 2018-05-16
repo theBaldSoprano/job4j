@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"ru.job4j"}]
