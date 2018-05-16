@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"ru.job4j","l":"Calculate"}]
