@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
     @Test
-    public void whenAddOneToOne_ThenTwo() {
+    public void whenAddOneToOneThenTwo() {
         //arrange
         Calculator calculator = new Calculator();
         double expected = 2d;
@@ -20,7 +20,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void whenSubtractTwoFromOne_ThenMinusOne() {
+    public void whenSubtractTwoFromOneThenMinusOne() {
         //arrange
         Calculator calculator = new Calculator();
         double expected = -1d;
@@ -33,7 +33,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void whenDivideSixByTwo_ThenThree() {
+    public void whenDivideSixByTwoThenThree() {
         //arrange
         Calculator calculator = new Calculator();
         double expected = 3d;
@@ -46,7 +46,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void whenMultiplySixAndTwo_ThenTwelve() {
+    public void whenMultiplySixAndTwoThenTwelve() {
         //arrange
         Calculator calculator = new Calculator();
         double expected = 12d;
