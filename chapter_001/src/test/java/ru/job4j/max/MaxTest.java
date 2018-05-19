@@ -19,4 +19,14 @@ public class MaxTest {
         int result = maxim.max(2, 1);
         assertThat(result, is(2));
     }
+
+    @Test
+    public void whenThreeIsMaxThenReturnThree(){
+        Max max = new Max();
+        int expected = 3;
+
+        int actual = max.max(1, -9, 3);
+
+        assertThat(actual, is(expected));
+    }
 }
