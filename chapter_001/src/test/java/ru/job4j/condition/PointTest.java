@@ -10,10 +10,7 @@ public class PointTest {
     public void distanceTo() {
         Point a = new Point(-5, 5);
         Point b = new Point(44, 1);
-
         double result = a.distanceTo(b);
-
         assertThat(result, closeTo(49.1, 0.1));
-
     }
 }
