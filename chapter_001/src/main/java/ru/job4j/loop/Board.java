@@ -1,12 +1,6 @@
 package ru.job4j.loop;
 
 public class Board {
-    public static void main(String[] args) {
-        System.out.println(new Board().paint(5, 5));
-        System.out.println("/*******************************");
-        System.out.println(new Board().paint(10, 3));
-    }
-
     /**
      * Builds a visual chess deck of X and Spaces
      * with the passed width and height.
