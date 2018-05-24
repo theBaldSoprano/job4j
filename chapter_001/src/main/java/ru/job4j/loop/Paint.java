@@ -7,21 +7,44 @@ public class Paint {
      * @param h
      * @return
      */
-    String pyramid(int h) {
-        if (h < 1) throw new IllegalArgumentException();
-        int width = h + h - 1;
+    String pyramid(int height) {
+        StringBuilder screen = new StringBuilder();
+        int weight = 2 * height - 1;
+        for (int row = 0; row != height; row++) {
+            for (int column = 0; column != weight; column++) {
+                if (row >= height - column - 1 && row + height - 1 >= column) {
+                    screen.append("^");
+                } else {
+                    screen.append(" ");
+                }
+            }
+            screen.append(System.lineSeparator());
+        }
+        return screen.toString();
+    }
+
+    public String right(int height) {
         StringBuilder stringBuilder = new StringBuilder();
-        StringBuilder row = new StringBuilder();
-        for (int i = 1; i < h + 1; i++) {
-            for (int j = 0; j < width - (i + i - 1); j++) {
-                row.append(" ");
+        int weight = height;
+        for (int row = 0; row != height; row++) {
+            for (int column = 0; column != weight; column++) {
+                if (column <= row) stringBuilder.append('^');
+                else stringBuilder.append(" ");
             }
-            for (int j = 0; j < i + i - 1; j++) {
-                row.insert((width - (i + i - 1)) / 2, '^');
+            stringBuilder.append(System.lineSeparator());
+        }
+        return stringBuilder.toString();
+    }
+
+    public String left(int height) {
+        StringBuilder stringBuilder = new StringBuilder();
+        int weight = height;
+        for (int row = 0; row != height; row++) {
+            for (int column = 0; column != weight; column++) {
+                if (row >= weight - column - 1) stringBuilder.append('^');
+                else stringBuilder.append(" ");
             }
-            if (i != h) row.append(System.lineSeparator());
-            stringBuilder.append(row.toString());
-            row.setLength(0);
+            stringBuilder.append(System.lineSeparator());
         }
         return stringBuilder.toString();
     }
