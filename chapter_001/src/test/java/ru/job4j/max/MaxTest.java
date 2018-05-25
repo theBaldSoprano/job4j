@@ -21,7 +21,7 @@ public class MaxTest {
     }
 
     @Test
-    public void whenThreeIsMaxThenReturnThree(){
+    public void whenThreeIsMaxThenReturnThree() {
         Max max = new Max();
         int expected = 3;
 

@@ -14,8 +14,8 @@ public class MyPaintTest {
         String rst = paint.pyramid(2);
         assertThat(rst,
                 is(
-                        " ^ " + System.lineSeparator() +
-                                "^^^"
+                        " ^ " + System.lineSeparator()
+                                + "^^^"
 
                 )
         );

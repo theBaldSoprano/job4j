@@ -19,7 +19,7 @@ public class FactorialTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void whenPassLessThanZeroThenIllegalArgumentExeption(){
+    public void whenPassLessThanZeroThenIllegalArgumentExeption() {
         factorial.calc(-1);
     }
 }

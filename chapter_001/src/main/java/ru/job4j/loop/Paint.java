@@ -37,8 +37,11 @@ public class Paint {
         StringBuilder stringBuilder = new StringBuilder();
         for (int row = 0; row != height; row++) {
             for (int column = 0; column != weight; column++) {
-                if (predicate.test(row, column)) stringBuilder.append("^");
-                else stringBuilder.append(" ");
+                if (predicate.test(row, column)) {
+                    stringBuilder.append("^");
+                } else {
+                    stringBuilder.append(" ");
+                }
             }
             stringBuilder.append(System.lineSeparator());
         }

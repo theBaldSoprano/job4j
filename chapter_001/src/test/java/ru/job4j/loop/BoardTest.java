@@ -11,11 +11,11 @@ public class BoardTest {
         Board board = new Board();
         String result = board.paint(5, 5);
         final String line = System.lineSeparator();
-        String expected = String.format("X X X" + line +
-                                        " X X " + line +
-                                        "X X X" + line +
-                                        " X X " + line +
-                                        "X X X");
+        String expected = String.format("X X X" + line
+                + " X X " + line
+                + "X X X" + line
+                + " X X " + line
+                + "X X X" + line);
         assertThat(result, is(expected));
     }
 
@@ -24,9 +24,9 @@ public class BoardTest {
         Board board = new Board();
         String result = board.paint(10, 3);
         final String line = System.lineSeparator();
-        String expected = String.format("X X X X X " + line +
-                                        " X X X X X" + line +
-                                        "X X X X X ");
+        String expected = String.format("X X X X X " + line
+                + " X X X X X" + line
+                + "X X X X X " + line);
         assertThat(result, is(expected));
     }
 }

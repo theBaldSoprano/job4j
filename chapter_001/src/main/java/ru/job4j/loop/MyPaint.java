@@ -8,7 +8,9 @@ public class MyPaint {
      * @return
      */
     String pyramid(int h) {
-        if (h < 1) throw new IllegalArgumentException();
+        if (h < 1) {
+            throw new IllegalArgumentException();
+        }
         int width = h + h - 1;
         StringBuilder stringBuilder = new StringBuilder();
         StringBuilder row = new StringBuilder();
@@ -19,7 +21,9 @@ public class MyPaint {
             for (int j = 0; j < i + i - 1; j++) {
                 row.insert((width - (i + i - 1)) / 2, '^');
             }
-            if (i != h) row.append(System.lineSeparator());
+            if (i != h) {
+                row.append(System.lineSeparator());
+            }
             stringBuilder.append(row.toString());
             row.setLength(0);
         }
