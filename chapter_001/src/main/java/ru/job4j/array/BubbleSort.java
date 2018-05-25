@@ -17,6 +17,7 @@ public class BubbleSort {
                     array[j + 1] = tmp;
                 }
             }
+            depth--;
         }
         return array;
     }
