@@ -13,12 +13,11 @@ public class Segment {
 
     public boolean isCrossing(Segment that) {
         return
-                this.test(this, that, (first, second) -> first.end >= second.start)
-                        && this.test(this, that, (first, second) -> first.start <= second.end);
+                this.test(that, (first, second) -> first.end >= second.start)
+                        && this.test(that, (first, second) -> first.start <= second.end);
     }
 
-    public boolean test(Segment first, Segment second, BiPredicate<Segment, Segment> predicate) {
-        return predicate.test(first, second);
+    private boolean test(Segment second, BiPredicate<Segment, Segment> predicate) {
+        return predicate.test(this, second);
     }
-
 }
