@@ -7,10 +7,10 @@ import java.util.StringJoiner;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class MyPaintTest {
+public class AlternativePaintTest {
     @Test
     public void whenPyramidIs2ThenItMatchesThePattern() {
-        MyPaint paint = new MyPaint();
+        AlternativePaint paint = new AlternativePaint();
         String rst = paint.pyramid(2);
         assertThat(rst,
                 is(
@@ -23,7 +23,7 @@ public class MyPaintTest {
 
     @Test
     public void whenPyramid4() {
-        MyPaint paint = new MyPaint();
+        AlternativePaint paint = new AlternativePaint();
         String rst = paint.pyramid(4) + System.lineSeparator();
         System.out.println(rst);
         assertThat(rst,

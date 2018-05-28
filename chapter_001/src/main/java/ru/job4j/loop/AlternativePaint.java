@@ -1,6 +1,6 @@
 package ru.job4j.loop;
 
-public class MyPaint {
+public class AlternativePaint {
     /**
      * Paints a pyramid with the passed height.
      *
@@ -12,7 +12,7 @@ public class MyPaint {
             throw new IllegalArgumentException();
         }
         int width = h + h - 1;
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder pyramid = new StringBuilder();
         StringBuilder row = new StringBuilder();
         for (int i = 1; i < h + 1; i++) {
             for (int j = 0; j < width - (i + i - 1); j++) {
@@ -24,9 +24,9 @@ public class MyPaint {
             if (i != h) {
                 row.append(System.lineSeparator());
             }
-            stringBuilder.append(row.toString());
+            pyramid.append(row.toString());
             row.setLength(0);
         }
-        return stringBuilder.toString();
+        return pyramid.toString();
     }
 }
