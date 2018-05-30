@@ -8,7 +8,7 @@ public class MatrixCheck {
             if (data[i][i] != data[i + 1][i + 1]) {
                 diag1 = false;
             }
-            if (data[i][data.length - i - 1] != data[i + 1][data.length - i - 2]){
+            if (data[i][data.length - i - 1] != data[i + 1][data.length - i - 2]) {
                 diag2 = false;
             }
         }
