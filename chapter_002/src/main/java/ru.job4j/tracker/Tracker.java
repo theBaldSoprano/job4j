@@ -7,7 +7,7 @@ public class Tracker {
     /**
      * Array to hold requests.
      */
-    Item[] items = new Item[100];
+    private Item[] items = new Item[100];
 
     private int position = 0;
 
@@ -32,7 +32,9 @@ public class Tracker {
     public void replace(String id, Item item) {
         for (int i = 0; i < position; i++) {
             if (this.items[i].getId().equals(id)) {
+                item.setId(items[i].getId());
                 this.items[i] = item;
+                break;
             }
         }
     }
