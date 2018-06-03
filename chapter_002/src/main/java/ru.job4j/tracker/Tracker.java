@@ -67,7 +67,7 @@ public class Tracker {
      *
      * @return
      */
-    public Item[] findAll() {
+    public Item[] findAllNotNull() {
         return Arrays.copyOf(this.items, position);
     }
 
@@ -81,7 +81,7 @@ public class Tracker {
         Item[] result = new Item[this.position];
         int position = 0;
         for (int i = 0; i < this.position; i++) {
-            if (items[i].getName().equals(name)) {
+            if (items[i].getName().contains(name)) {
                 result[position++] = items[i];
             }
         }
@@ -121,16 +121,6 @@ public class Tracker {
      */
     private String generateId() {
         //Реализовать метод генерации.
-        return Double.toString(new Date().getTime() * 1.139654);
+        return Double.toString(new Date().getTime() * 1.1);
     }
 }
-
-
-/*
-добавление заявок - public Item add(Item item);
-редактирование заявок - public void replace(String id, Item item);
-удаление заявок - public void delete(String id);
-получение списка всех заявок - public Item[] findAll();
-получение списка по имени - public Item[] findByName(String key);
-получение заявки по id - public Item findById(String id);
- */

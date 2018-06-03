@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.Date;
+
 /**
  * This class describes one Request
  */
@@ -7,20 +9,18 @@ public class Item {
     private String id;
     private String name;
     private String description;
-    private long created;
+    private long created = new Date().getTime();
     private String[] comments;
 
-    public Item(String id, String name, String description, long created, String[] comments) {
-        this.id = id;
+    public Item(String name, String description, String[] comments) {
         this.name = name;
         this.description = description;
-        this.created = created;
         this.comments = comments;
     }
 
     public Item(String id, String name) {
-        this.id = id;
-        this.name = name;
+        this.name = id;
+        this.description = name;
     }
 
     public Item(String id) {
@@ -65,5 +65,12 @@ public class Item {
 
     public void setComments(String[] comments) {
         this.comments = comments;
+    }
+
+    public String toString() {
+        return "|| " +
+                "id is: " + id + '\'' +
+                ", name is: " + name + '\'' +
+                "||";
     }
 }
