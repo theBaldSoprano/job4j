@@ -18,9 +18,9 @@ public class Item {
         this.comments = comments;
     }
 
-    public Item(String id, String name) {
-        this.name = id;
-        this.description = name;
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public Item(String id) {
@@ -68,9 +68,9 @@ public class Item {
     }
 
     public String toString() {
-        return "|| " +
-                "id is: " + id + '\'' +
-                ", name is: " + name + '\'' +
-                "||";
+        return "|| "
+                + "id is: " + id + '\''
+                + ", name is: " + name + '\''
+                + "||";
     }
 }

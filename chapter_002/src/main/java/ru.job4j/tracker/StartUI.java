@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -67,10 +68,12 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
+        this.cls();
         boolean exit = false;
         while (!exit) {
             this.showMenu();
             String answer = this.input.ask("Enter menu number : ");
+            this.cls();
             switch (answer) {
                 case ADD:
                     this.createItem();
@@ -93,6 +96,8 @@ public class StartUI {
                 case FIND_BY_NAME:
                     this.findByName();
                     break;
+                default:
+                    System.out.println("------------ Wrong menu number. Try again. ------------");
             }
         }
     }
@@ -106,6 +111,11 @@ public class StartUI {
         String desc = this.input.ask("Enter description :");
         Item item = new Item(name, desc);
         this.tracker.add(item);
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (InterruptedException | IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("------------ New task id : " + item.getId() + "-----------");
     }
 
@@ -129,9 +139,14 @@ public class StartUI {
         String name = this.input.ask("Enter new name.");
         String description = this.input.ask("Enter new description.");
         Item newItem = new Item(name, description);
-        newItem.setCreated(this.tracker.findById(id).getCreated());
-        this.tracker.replace(id, newItem);
-        System.out.println("------------ Done! --------------");
+        Item oldItem = this.tracker.findById(id);
+        if (oldItem == null) {
+            System.out.println("------------ No tasks with specified ID!!! --------------");
+        } else {
+            newItem.setCreated(oldItem.getCreated());
+            this.tracker.replace(id, newItem);
+            System.out.println("------------ Done! --------------");
+        }
     }
 
     /**
@@ -170,14 +185,26 @@ public class StartUI {
     }
 
     private void showMenu() {
-        System.out.println("Menu.");
-        System.out.println("0. Add task.");
-        System.out.println("1. Show all tasks.");
-        System.out.println("2. Edit task.");
-        System.out.println("3. Delete task.");
-        System.out.println("4. Find task by ID.");
-        System.out.println("5. Find task by name.");
-        System.out.println("6. Exit.");
+        System.out.println("------------ Menu. ------------");
+        System.out.println("--------- 0. Add task.");
+        System.out.println("--------- 1. Show all tasks.");
+        System.out.println("--------- 2. Edit task.");
+        System.out.println("--------- 3. Delete task.");
+        System.out.println("--------- 4. Find task by ID.");
+        System.out.println("--------- 5. Find task by name.");
+        System.out.println("--------- 6. Exit.");
+    }
+
+    /**
+     * Clears CMD screen. Only for windows pc.
+     * Executes win command line with cls command.
+     */
+    private void cls() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (InterruptedException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

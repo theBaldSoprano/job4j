@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 public class TrackerTest {
     @Test
-    public void whenReplaceTheGetNew(){
+    public void whenReplaceThenGetNew() {
         Item firstItem = new Item("234234");
         Item secondItem = new Item("foo", "azaza");
         Item thirdItem = new Item("bar");
@@ -18,7 +18,7 @@ public class TrackerTest {
         tracker.add(secondItem);
         tracker.add(thirdItem);
         String id = tracker.getAll()[1].getId();
-        tracker.replace(id, new Item("lol", "bazaa"));
+        tracker.replace(id, new Item("bazaa", "lol"));
         assertThat(tracker.getAll()[1].getName(), is("bazaa"));
     }
 
@@ -38,21 +38,19 @@ public class TrackerTest {
 
     @Test
     public void whenSelectByNameThenGetOnlyThatName() {
-        Item firstItem = new Item("234234", "foo");
-        Item secondItem = new Item("foo", "foo");
+        Item firstItem = new Item("234234", "foon");
+        Item secondItem = new Item("foo", "foof");
         Item thirdItem = new Item("bar", "bar");
-        Item fourthItem = new Item("bar", "baz");
+        Item fourthItem = new Item("barfoo", "baz");
         Tracker tracker = new Tracker();
         tracker.add(firstItem);
         tracker.add(secondItem);
         tracker.add(thirdItem);
         tracker.add(fourthItem);
-
         Item[] result = tracker.findByName("foo");
-
         assertThat(result.length, is(2));
-        assertThat(result[0].getName(), is("foo"));
-        assertThat(result[1].getName(), is("foo"));
+        assertThat(result[0].getDescription(), is("foof"));
+        assertThat(result[1].getDescription(), is("baz"));
     }
 
     @Test
