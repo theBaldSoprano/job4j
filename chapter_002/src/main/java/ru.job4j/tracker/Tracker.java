@@ -11,6 +11,8 @@ public class Tracker {
 
     private int position = 0;
 
+    private long currentId = 0;
+
     /**
      * Adds new request to the array.
      *
@@ -32,7 +34,7 @@ public class Tracker {
     public void replace(String id, Item item) {
         for (int i = 0; i < position; i++) {
             if (this.items[i].getId().equals(id)) {
-                item.setId(items[i].getId());
+                item.setId(this.items[i].getId());
                 this.items[i] = item;
                 break;
             }
@@ -120,7 +122,6 @@ public class Tracker {
      * @return ID.
      */
     private String generateId() {
-        //Реализовать метод генерации.
-        return Double.toString(new Date().getTime() * 1.1);
+        return Long.toString(currentId++);
     }
 }

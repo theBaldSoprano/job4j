@@ -3,6 +3,8 @@ package ru.job4j.tracker;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
+import java.util.Date;
+
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
@@ -10,16 +12,15 @@ import static org.junit.Assert.assertThat;
 public class TrackerTest {
     @Test
     public void whenReplaceThenGetNew() {
-        Item firstItem = new Item("234234");
-        Item secondItem = new Item("foo", "azaza");
-        Item thirdItem = new Item("bar");
+        Item firstItem = new Item("234234", "ololo");
+        Item secondItem = new Item("funt", "scam");
         Tracker tracker = new Tracker();
         tracker.add(firstItem);
         tracker.add(secondItem);
-        tracker.add(thirdItem);
         String id = tracker.getAll()[1].getId();
-        tracker.replace(id, new Item("bazaa", "lol"));
-        assertThat(tracker.getAll()[1].getName(), is("bazaa"));
+        Item newItem = new Item("bazaa", "lol");
+        tracker.replace(id, newItem);
+        assertThat(tracker.getAllNotNull()[1].getName(), is("bazaa"));
     }
 
     @Test
@@ -64,9 +65,7 @@ public class TrackerTest {
         tracker.add(secondItem);
         tracker.add(thirdItem);
         tracker.add(fourthItem);
-
         Item result = tracker.findById(secondItem.getId());
-
         assertThat(result.getId(), is(secondItem.getId()));
     }
 
@@ -81,9 +80,7 @@ public class TrackerTest {
         tracker.add(secondItem);
         tracker.add(thirdItem);
         tracker.add(fourthItem);
-
         Item result = tracker.findById("worm");
-
         assertThat(result, is(nullValue()));
     }
 }
