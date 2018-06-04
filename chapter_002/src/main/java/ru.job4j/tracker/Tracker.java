@@ -67,7 +67,7 @@ public class Tracker {
      *
      * @return
      */
-    public Item[] findAllNotNull() {
+    public Item[] getAllNotNull() {
         return Arrays.copyOf(this.items, position);
     }
 

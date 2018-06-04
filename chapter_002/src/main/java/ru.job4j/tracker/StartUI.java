@@ -123,7 +123,7 @@ public class StartUI {
      * Prints all existing requests.
      */
     private void showAllItems() {
-        Item[] allItems = this.tracker.findAllNotNull();
+        Item[] allItems = this.tracker.getAllNotNull();
         System.out.println("------------ List of all tasks --------------");
         for (Item item : allItems) {
             System.out.println(item.toString());
