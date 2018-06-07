@@ -111,11 +111,7 @@ public class StartUI {
         String desc = this.input.ask("Enter description :");
         Item item = new Item(name, desc);
         this.tracker.add(item);
-        try {
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
+        this.cls();
         System.out.println("------------ New task id : " + item.getId() + "-----------");
     }
 

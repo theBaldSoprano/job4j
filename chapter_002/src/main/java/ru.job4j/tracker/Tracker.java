@@ -11,7 +11,7 @@ public class Tracker {
 
     private int position = 0;
 
-    private long currentId = 0;
+    private long currentId = 1;
 
     /**
      * Adds new request to the array.
