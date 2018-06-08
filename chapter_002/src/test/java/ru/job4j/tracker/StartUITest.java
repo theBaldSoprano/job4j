@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.plaf.synth.SynthEditorPaneUI;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -31,7 +30,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         tracker.add(new Item("foo", "moon"));
         tracker.add(new Item("bar", "coon"));
-        StubInput stubInput = new StubInput(new String[]{"1", "6"});
+        StubInput stubInput = new StubInput(new String[]{"1", "yes"});
         new StartUI(stubInput, tracker).init();
         assertThat(
                 new String(this.out.toByteArray())
@@ -51,7 +50,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         tracker.add(new Item("foo", "moon"));
         tracker.getAll()[0].setId("foorba");
-        StubInput stubInput = new StubInput(new String[]{"4", "foorba", "6"});
+        StubInput stubInput = new StubInput(new String[]{"4", "foorba", "yes"});
         new StartUI(stubInput, tracker).init();
         assertThat(
                 new String(this.out.toByteArray())
@@ -72,7 +71,7 @@ public class StartUITest {
         tracker.add(new Item("foondo", "moon"));
         tracker.add(new Item("foockup", "goon"));
         tracker.add(new Item("barza", "goon"));
-        StubInput stubInput = new StubInput(new String[]{"5", "foo", "6"});
+        StubInput stubInput = new StubInput(new String[]{"5", "foo", "yes"});
         new StartUI(stubInput, tracker).init();
         assertThat(
                 new String(this.out.toByteArray())
@@ -103,7 +102,7 @@ public class StartUITest {
     @Test
     public void whenAddTaskThenItIsAdded() {
         Tracker tracker = new Tracker();
-        StubInput stubInput = new StubInput(new String[]{"0", "foo", "bar", "6"});
+        StubInput stubInput = new StubInput(new String[]{"0", "foo", "bar", "yes"});
         new StartUI(stubInput, tracker).init();
         assertThat(tracker.getAllNotNull().length, is(1));
         assertThat(tracker.getAll()[0].getDescription(), is("bar"));
@@ -114,7 +113,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         tracker.add(new Item("foo", "baz"));
         String id = tracker.getAllNotNull()[0].getId();
-        StubInput stubInput = new StubInput(new String[]{"3", id, "6"});
+        StubInput stubInput = new StubInput(new String[]{"3", id, "yes"});
         new StartUI(stubInput, tracker).init();
         assertThat(tracker.getAllNotNull(), is(emptyArray()));
     }
@@ -124,7 +123,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         tracker.add(new Item("foo", "baz"));
         String id = tracker.getAllNotNull()[0].getId();
-        StubInput stubInput = new StubInput(new String[]{"2", id, "fan", "bazar", "6"});
+        StubInput stubInput = new StubInput(new String[]{"2", id, "fan", "bazar", "yes"});
         new StartUI(stubInput, tracker).init();
         assertThat(tracker.getAllNotNull()[0].getName(), is("fan"));
         assertThat(tracker.getAllNotNull()[0].getDescription(), is("bazar"));
