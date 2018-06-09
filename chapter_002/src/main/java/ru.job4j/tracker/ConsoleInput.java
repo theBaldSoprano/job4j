@@ -16,4 +16,21 @@ public class ConsoleInput implements Input {
         }
         return response;
     }
+
+    @Override
+    public int ask(String question, int[] range) {
+        int key = Integer.valueOf(ask(question));
+        boolean exists = false;
+        for (int num : range) {
+            if (num == key) {
+                exists = true;
+                break;
+            }
+        }
+        if (exists) {
+            return key;
+        } else {
+            throw new MenuOutException("Yo dude! Here you were out of menu number range");
+        }
+    }
 }

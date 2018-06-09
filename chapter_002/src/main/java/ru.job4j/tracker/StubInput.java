@@ -1,6 +1,12 @@
 package ru.job4j.tracker;
 
 public class StubInput implements Input {
+    @Override
+    public int ask(String question, int[] range) {
+        //throw new UnsupportedOperationException("unsupported ops");
+        return Integer.valueOf(this.ask(question));
+    }
+
     /**
      * Это поле содержит последовательность ответов пользователя.
      * Например. Если пользователь

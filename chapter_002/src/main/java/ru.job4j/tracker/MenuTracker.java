@@ -16,6 +16,14 @@ public class MenuTracker {
         this.tracker = tracker;
     }
 
+    public int[] getMenuRange() {
+        int[] result = new int[userActions.length];
+        for (int i = 0; i < userActions.length; i++) {
+            result[i] = userActions[i].key();
+        }
+        return result;
+    }
+
     /**
      * Inits available actions.
      */
@@ -130,14 +138,14 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Enter ID of task you want to find.");
             Item item = tracker.findById(id);
-            if (item == null){
+            if (item == null) {
                 System.out.println("------------ no task with such ID --------------");
                 return;
             }
             System.out.println("------------ TASK --------------");
             System.out.println(item.toString());
-            System.out.println("Description: " + item.getDescription());
-            System.out.println("Date created: " + new Date(item.getCreated()).toString());
+            System.out.println("|| Description: " + item.getDescription());
+            System.out.println("|| Date created: " + new Date(item.getCreated()).toString());
             System.out.println("------------ END --------------");
         }
 

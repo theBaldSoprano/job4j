@@ -68,6 +68,6 @@ public class Item {
     }
 
     public String toString() {
-        return String.format("||id is: %s, name is: %s||", id, name);
+        return String.format("|| id is: %s, name is: %s ||", id, name);
     }
 }

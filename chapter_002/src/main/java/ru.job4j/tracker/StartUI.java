@@ -20,6 +20,9 @@ public class StartUI {
      */
     private final Tracker tracker;
 
+    private int[] menuRange;
+    MenuTracker menuTracker;
+
     /**
      * Конструтор инициализирующий поля.
      *
@@ -29,18 +32,18 @@ public class StartUI {
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
+        menuTracker = new MenuTracker(this.input, this.tracker);
+        menuTracker.fillActions();
+        menuRange = menuTracker.getMenuRange();
     }
 
     /**
      * Основой цикл программы.
      */
     public void init() {
-        MenuTracker menuTracker = new MenuTracker(this.input, this.tracker);
-        menuTracker.fillActions();
         do {
             menuTracker.show();
-            int key = Integer.valueOf(input.ask("enter submenu number"));
-            menuTracker.select(key);
+            menuTracker.select(input.ask("enter submenu number", menuRange));
         } while (!"yes".equals(this.input.ask("do you want to exit?")));
     }
 
@@ -62,6 +65,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
