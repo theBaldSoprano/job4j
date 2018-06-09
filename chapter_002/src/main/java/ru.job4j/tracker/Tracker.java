@@ -42,11 +42,11 @@ public class Tracker {
     }
 
     /**
-     * Deletes request by passed ID.
+     * Deletes item by passed ID.
      *
      * @param id
      */
-    void delete(String id) {
+    public void delete(String id) {
         int delete = 0;
         for (int i = 0; i < position; i++) {
             if (this.items[i].getId().equals(id)) {

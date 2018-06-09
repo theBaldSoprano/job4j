@@ -130,6 +130,10 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Enter ID of task you want to find.");
             Item item = tracker.findById(id);
+            if (item == null){
+                System.out.println("------------ no task with such ID --------------");
+                return;
+            }
             System.out.println("------------ TASK --------------");
             System.out.println(item.toString());
             System.out.println("Description: " + item.getDescription());
