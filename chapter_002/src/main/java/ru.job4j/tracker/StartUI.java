@@ -44,7 +44,7 @@ public class StartUI {
         do {
             menuTracker.show();
             menuTracker.select(input.ask("enter submenu number", menuRange));
-        } while (!"yes".equals(this.input.ask("do you want to exit?")));
+        } while (!"yes".equals(this.input.ask("Type \"yes\" to exit.\nPress Enter to continue.")));
     }
 
     /**
