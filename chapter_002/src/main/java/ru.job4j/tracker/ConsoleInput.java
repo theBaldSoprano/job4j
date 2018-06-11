@@ -19,7 +19,7 @@ public class ConsoleInput implements Input {
 
     @Override
     public int ask(String question, int[] range) {
-        int key = Integer.valueOf(ask(question));
+        int key = Integer.valueOf(this.ask(question));
         boolean exists = false;
         for (int num : range) {
             if (num == key) {
@@ -27,10 +27,9 @@ public class ConsoleInput implements Input {
                 break;
             }
         }
-        if (exists) {
-            return key;
-        } else {
+        if (!exists) {
             throw new MenuOutException("Yo dude! Here you were out of menu number range");
         }
+        return key;
     }
 }
