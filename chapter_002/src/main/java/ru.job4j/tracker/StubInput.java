@@ -3,8 +3,19 @@ package ru.job4j.tracker;
 public class StubInput implements Input {
     @Override
     public int ask(String question, int[] range) {
-        //throw new UnsupportedOperationException("unsupported ops");
-        return Integer.valueOf(this.ask(question));
+        int key = Integer.valueOf(ask(question));
+        boolean exists = false;
+        for (int num : range) {
+            if (num == key) {
+                exists = true;
+                break;
+            }
+        }
+        if (exists) {
+            return key;
+        } else {
+            throw new MenuOutException("Yo dude! Here you were out of menu number range");
+        }
     }
 
     /**
