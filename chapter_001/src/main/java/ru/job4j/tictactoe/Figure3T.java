@@ -19,11 +19,19 @@ public class Figure3T extends Rectangle {
         this.markO = !markX;
     }
 
-    public boolean hasMarkX() {
-        return this.markX;
-    }
-
-    public boolean hasMarkO() {
-        return this.markO;
+    /**
+     * Argument mark:
+     * true is for X
+     * false is for O.
+     *
+     * @param mark
+     * @return
+     */
+    public boolean hasMark(boolean mark) {
+        if (mark) {
+            return this.markX;
+        } else {
+            return this.markO;
+        }
     }
 }

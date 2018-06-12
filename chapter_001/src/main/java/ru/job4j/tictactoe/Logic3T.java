@@ -7,11 +7,20 @@ public class Logic3T {
         this.table = table;
     }
 
-    public boolean isWinnerX() {
+    /**
+     * Argument who represents who to check.
+     * True is for X.
+     * False is for O.
+     *
+     * @param who
+     * @return
+     */
+    public boolean isWinner(boolean who) {
         boolean result = true;
+        // Check all rows.
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table.length; j++) {
-                if (!table[i][j].hasMarkX()) {
+                if (!table[i][j].hasMark(who)) {
                     result = false;
                     break;
                 }
@@ -21,9 +30,10 @@ public class Logic3T {
             }
             result = true;
         }
+        // Check all columns.
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table.length; j++) {
-                if (!table[j][i].hasMarkX()) {
+                if (!table[j][i].hasMark(who)) {
                     result = false;
                     break;
                 }
@@ -33,8 +43,9 @@ public class Logic3T {
             }
             result = true;
         }
+        // Check diagonals.
         for (int i = 0; i < table.length; i++) {
-            if (!table[i][i].hasMarkX()) {
+            if (!table[i][i].hasMark(who)) {
                 result = false;
                 break;
             }
@@ -44,61 +55,10 @@ public class Logic3T {
         }
         result = true;
         for (int i = 0; i < table.length; i++) {
-            if (!table[i][table.length - 1 - i].hasMarkX()) {
+            if (!table[i][table.length - 1 - i].hasMark(who)) {
                 result = false;
                 break;
             }
-        }
-        if (result) {
-            return result;
-        }
-        return result;
-    }
-
-    public boolean isWinnerO() {
-        boolean result = true;
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table.length; j++) {
-                if (!table[i][j].hasMarkO()) {
-                    result = false;
-                    break;
-                }
-            }
-            if (result) {
-                return result;
-            }
-            result = true;
-        }
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table.length; j++) {
-                if (!table[j][i].hasMarkO()) {
-                    result = false;
-                    break;
-                }
-            }
-            if (result) {
-                return result;
-            }
-            result = true;
-        }
-        for (int i = 0; i < table.length; i++) {
-            if (!table[i][i].hasMarkO()) {
-                result = false;
-                break;
-            }
-        }
-        if (result) {
-            return result;
-        }
-        result = true;
-        for (int i = 0; i < table.length; i++) {
-            if (!table[i][table.length - 1 - i].hasMarkO()) {
-                result = false;
-                break;
-            }
-        }
-        if (result) {
-            return result;
         }
         return result;
     }
@@ -106,7 +66,7 @@ public class Logic3T {
     public boolean hasGap() {
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table[i].length; j++) {
-                if (!table[i][j].hasMarkX() && !table[i][j].hasMarkO()) {
+                if (!table[i][j].hasMark(true) && !table[i][j].hasMark(false)) {
                     return true;
                 }
             }
@@ -114,4 +74,3 @@ public class Logic3T {
         return false;
     }
 }
-
