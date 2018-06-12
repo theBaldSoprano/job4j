@@ -7,31 +7,31 @@ import static org.junit.Assert.assertThat;
 
 public class MatrixCheckTest {
     @Test
-    public void whenDataMonoByTrueThenTrue() {
+    public void whenDataMonoThenTrue() {
         MatrixCheck check = new MatrixCheck();
         boolean[][] input = new boolean[][]{
                 {true, true, true},
                 {false, true, true},
-                {true, false, false}
+                {true, false, true}
         };
         boolean result = check.mono(input);
         assertThat(result, is(true));
     }
 
     @Test
-    public void whenDataNotMonoByTrueThenFalse() {
+    public void whenDataNotMonoThenFalse() {
         MatrixCheck check = new MatrixCheck();
         boolean[][] input = new boolean[][]{
                 {true, true, false},
                 {false, false, true},
-                {true, false, true}
+                {false, false, true}
         };
         boolean result = check.mono(input);
         assertThat(result, is(false));
     }
 
     @Test
-    public void whenDataOddNotMonoByFalseThenFalse() {
+    public void whenDataOddNotMonoThenFalse() {
         MatrixCheck check = new MatrixCheck();
         boolean[][] input = new boolean[][]{
                 {false, true, true, false, true},
@@ -41,6 +41,6 @@ public class MatrixCheckTest {
                 {false, false, true, false, false}
         };
         boolean result = check.mono(input);
-        assertThat(result, is(true));
+        assertThat(result, is(false));
     }
 }

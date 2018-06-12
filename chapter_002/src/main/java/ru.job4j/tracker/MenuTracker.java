@@ -162,7 +162,8 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("do you really want to exit?");
+            //System.out.println("do you really want to exit?");
+            System.exit(0);
         }
     }
 }

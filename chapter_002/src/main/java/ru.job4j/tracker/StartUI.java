@@ -41,10 +41,10 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
-        do {
+        while (true){
             menuTracker.show();
             menuTracker.select(input.ask("enter submenu number", menuRange));
-        } while (!"yes".equals(this.input.ask("Type \"yes\" to exit.\nPress Enter to continue.")));
+        }
     }
 
     /**
@@ -60,7 +60,7 @@ public class StartUI {
     }
 
     /**
-     * Запускт программы.
+     * Запуск программы.
      *
      * @param args
      */

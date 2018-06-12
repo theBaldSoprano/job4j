@@ -2,16 +2,18 @@ package ru.job4j.array;
 
 public class MatrixCheck {
     public boolean mono(boolean[][] data) {
-        boolean diag1 = true;
-        boolean diag2 = true;
-        for (int i = 0; i < data.length - 1; i++) {
-            if (data[i][i] != data[i + 1][i + 1]) {
-                diag1 = false;
+        boolean corner = data[0][0];
+        boolean isMono = true;
+        for (int i = 0; i < data.length; i++) {
+            if (data[i][i] != corner) {
+                isMono = false;
+                break;
             }
-            if (data[i][data.length - i - 1] != data[i + 1][data.length - i - 2]) {
-                diag2 = false;
+            if (data[i][data.length - i - 1] != corner) {
+                isMono = false;
+                break;
             }
         }
-        return diag1 || diag2;
+        return isMono;
     }
 }
