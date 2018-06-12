@@ -1,16 +1,21 @@
 package ru.job4j.array;
 
-import java.util.Arrays;
-
 public class MergeSorted {
-    public int[] merge(int[] first, int[] second) {
+    public static int[] merge(int[] first, int[] second) {
         int[] result = new int[first.length + second.length];
-        for (int i = 0; i < first.length; i++) {
-            result[i] = first[i];
+        int foo = 0;
+        int sar = 0;
+        for (int i = 0; i < result.length; i++) {
+            if (foo == first.length) {
+                result[i] = second[sar++];
+            } else if (sar == second.length) {
+                result[i] = first[foo++];
+            } else if (first[foo] <= second[sar]) {
+                result[i] = first[foo++];
+            } else if (first[foo] > second[sar]) {
+                result[i] = second[sar++];
+            }
         }
-        for (int i = 0; i < second.length; i++) {
-            result[i + first.length] = second[i];
-        }
-        return new BubbleSort().sort(result);
+        return result;
     }
 }
