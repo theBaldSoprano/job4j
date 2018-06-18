@@ -26,6 +26,7 @@ public enum Cell {
         for (Cell cell: cells) {
             if (cell.x == x && cell.y == y) {
                 result = cell;
+                break;
             }
         }
         if (result == null) {

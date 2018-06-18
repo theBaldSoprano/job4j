@@ -19,14 +19,14 @@ public class BishopBlack implements Figure {
     public Cell[] way(Cell source, Cell dest) throws NoSuchFieldException {
         Cell[] steps = new Cell[0];
         boolean rightWay = false;
-        int y = source.y;
         int x = source.x;
-        while (y != 0 || x != 0) {
-            y--;
+        int y = source.y;
+        while (x > 0 && y > 0) {
             x--;
+            y--;
         }
         for (int i = 0; i < 8; i++) {
-            if (y == 7 || x == 7) {
+            if (y > 7 || x > 7) {
                 break;
             }
             if (x == dest.x && y == dest.y) {
