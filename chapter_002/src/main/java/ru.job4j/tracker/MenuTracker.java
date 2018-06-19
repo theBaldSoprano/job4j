@@ -10,6 +10,7 @@ public class MenuTracker {
     private Input input;
     private Tracker tracker;
     private UserAction[] userActions = new UserAction[7];
+    public boolean exit = false;
 
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
@@ -163,7 +164,7 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             //System.out.println("do you really want to exit?");
-            System.exit(0);
+            exit = true;
         }
     }
 }

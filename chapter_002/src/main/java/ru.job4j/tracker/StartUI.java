@@ -41,7 +41,7 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
-        while (true){
+        while (!menuTracker.exit) {
             menuTracker.show();
             menuTracker.select(input.ask("enter submenu number", menuRange));
         }
