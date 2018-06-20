@@ -17,7 +17,20 @@ public class KingBlack implements Figure {
 
     @Override
     public Cell[] way(Cell source, Cell dest) {
-        return new Cell[]{dest};
+        Cell[] steps = new Cell[0];
+        if (
+                (source.x == dest.x && source.y == dest.y - 1)
+                        || (source.x == dest.x + 1 && source.y == dest.y - 1)
+                        || (source.x == dest.x + 1 && source.y == dest.y)
+                        || (source.x == dest.x + 1 && source.y == dest.y + 1)
+                        || (source.x == dest.x && source.y == dest.y + 1)
+                        || (source.x == dest.x - 1 && source.y == dest.y + 1)
+                        || (source.x == dest.x - 1 && source.y == dest.y)
+                        || (source.x == dest.x - 1 && source.y == dest.y - 1)
+        ) {
+            steps = new Cell[]{dest};
+        }
+        return steps;
     }
 
     @Override
