@@ -132,8 +132,8 @@ public class Chess extends Application {
         this.add(new QeenBlack(Cell.D8), grid);
         this.add(new KingBlack(Cell.E8), grid);
         /*this.add(new BishopBlack(Cell.E7), grid);
-        this.add(new KnightBlack(Cell.G8), grid);
-        this.add(new RookBlack(Cell.H8), grid);*/
+        this.add(new KnightBlack(Cell.G8), grid);*/
+        this.add(new RookBlack(Cell.H8), grid);
     }
 
     public void buildWhiteTeam(Group grid) {
