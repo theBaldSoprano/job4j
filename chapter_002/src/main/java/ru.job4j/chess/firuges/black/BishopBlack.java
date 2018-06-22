@@ -17,7 +17,7 @@ public class BishopBlack implements Figure {
 
     @Override
     public Cell[] way(Cell source, Cell dest) throws NoSuchFieldException {
-         Cell[] steps = new Cell[0];
+        Cell[] steps = new Cell[0];
         boolean rightWay = false;
         int x = source.x;
         int y = source.y;
