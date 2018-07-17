@@ -1,9 +1,20 @@
 package ru.job4j.list;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 public class ConvertList2Array {
+    public static void main(String[] args) {
+        ConvertList2Array list = new ConvertList2Array();
+        int[][] result = list.toArray(
+                Arrays.asList(1, 2, 3, 4, 5, 6, 7),
+                3
+        );
+        for (int[] x: result){
+            System.out.println(Arrays.toString(x));
+        }
+    }
     public int[][] toArray(List<Integer> list, int rows) {
         int cells;
         if (list.size() % rows == 0) {
@@ -19,8 +30,6 @@ public class ConvertList2Array {
             for (int j = 0; j < cells; j++) {
                 if (iterator.hasNext()) {
                     array[i][j] = iterator.next();
-                } else {
-                    array[i][j] = 0;
                 }
             }
         }
