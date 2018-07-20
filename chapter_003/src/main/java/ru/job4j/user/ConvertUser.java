@@ -1,9 +1,9 @@
-package ru.job4j.userconvert;
+package ru.job4j.user;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class UserConvert {
+public class ConvertUser {
     public HashMap<Integer, User> process(List<User> list) {
         HashMap<Integer, User> result = new HashMap<>();
         list
