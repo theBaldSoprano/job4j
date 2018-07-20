@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Start point to lauch all program modules, such as:
@@ -20,7 +21,7 @@ public class StartUI {
      */
     private final Tracker tracker;
 
-    private int[] menuRange;
+    private List<Integer> menuRange;
     MenuTracker menuTracker;
 
     /**

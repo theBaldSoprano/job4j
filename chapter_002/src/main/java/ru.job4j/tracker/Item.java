@@ -23,6 +23,13 @@ public class Item {
         this.description = description;
     }
 
+    public void replace(Item rep) {
+        this.setName(rep.getName());
+        this.setDescription(rep.getDescription());
+        this.setCreated(rep.getCreated());
+        this.setComments(rep.getComments());
+    }
+
     public Item(String id) {
         this.id = id;
     }

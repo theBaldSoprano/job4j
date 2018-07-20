@@ -2,11 +2,11 @@ package ru.job4j.tracker;
 
 public interface UserAction {
     /**
-     * Should return the key number of the action.
+     * Should return the getKey number of the action.
      *
      * @return
      */
-    int key();
+    int getKey();
 
     /**
      * Perform specified action with the passed input object and tracker.
@@ -22,4 +22,6 @@ public interface UserAction {
      * @return
      */
     String info();
+
+
 }

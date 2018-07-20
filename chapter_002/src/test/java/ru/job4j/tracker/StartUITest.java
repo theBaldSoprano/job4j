@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.emptyArray;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -36,9 +37,9 @@ public class StartUITest {
                 new String(this.out.toByteArray())
                         .contains(
                                 new StringBuilder()
-                                        .append(tracker.getAll()[0].toString())
+                                        .append(tracker.getAll().get(0).toString())
                                         .append(System.lineSeparator())
-                                        .append(tracker.getAll()[1].toString()).toString()
+                                        .append(tracker.getAll().get(1).toString()).toString()
                         ),
                 is(
                         true
@@ -49,14 +50,14 @@ public class StartUITest {
     public void whenAskTaskThenItIsShown() {
         Tracker tracker = new Tracker();
         tracker.add(new Item("foo", "moon"));
-        tracker.getAll()[0].setId("foorba");
+        tracker.getAll().get(0).setId("foorba");
         StubInput stubInput = new StubInput(new String[]{"4", "foorba", "6"});
         new StartUI(stubInput, tracker).init();
         assertThat(
                 new String(this.out.toByteArray())
                         .contains(
                                 new StringBuilder()
-                                        .append(tracker.getAll()[0].toString())
+                                        .append(tracker.getAll().get(0).toString())
                                         .toString()
                         ),
                 is(
@@ -77,9 +78,9 @@ public class StartUITest {
                 new String(this.out.toByteArray())
                         .contains(
                                 new StringBuilder()
-                                        .append(tracker.getAll()[0].toString())
+                                        .append(tracker.getAll().get(0).toString())
                                         .append(System.lineSeparator())
-                                        .append(tracker.getAll()[1].toString())
+                                        .append(tracker.getAll().get(1).toString())
                                         .toString()
                         ),
                 is(
@@ -90,7 +91,7 @@ public class StartUITest {
                 new String(this.out.toByteArray())
                         .contains(
                                 new StringBuilder()
-                                        .append(tracker.getAll()[2].toString())
+                                        .append(tracker.getAll().get(2).toString())
                                         .toString()
                         ),
                 is(
@@ -104,28 +105,28 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         StubInput stubInput = new StubInput(new String[]{"0", "foo", "bar", "6"});
         new StartUI(stubInput, tracker).init();
-        assertThat(tracker.getAllNotNull().length, is(1));
-        assertThat(tracker.getAll()[0].getDescription(), is("bar"));
+        assertThat(tracker.getAll().size(), is(1));
+        assertThat(tracker.getAll().get(0).getDescription(), is("bar"));
     }
 
     @Test
     public void whenDeleteTaskThenTrackerIsEmpty() {
         Tracker tracker = new Tracker();
         tracker.add(new Item("foo", "baz"));
-        String id = tracker.getAllNotNull()[0].getId();
+        String id = tracker.getAll().get(0).getId();
         StubInput stubInput = new StubInput(new String[]{"3", id, "6"});
         new StartUI(stubInput, tracker).init();
-        assertThat(tracker.getAllNotNull(), is(emptyArray()));
+        assertThat(tracker.getAll(), is(empty()));
     }
 
     @Test
     public void whenEditTaskThenTaskHasNewNameAndDescription() {
         Tracker tracker = new Tracker();
         tracker.add(new Item("foo", "baz"));
-        String id = tracker.getAllNotNull()[0].getId();
+        String id = tracker.getAll().get(0).getId();
         StubInput stubInput = new StubInput(new String[]{"2", id, "fan", "bazar", "6"});
         new StartUI(stubInput, tracker).init();
-        assertThat(tracker.getAllNotNull()[0].getName(), is("fan"));
-        assertThat(tracker.getAllNotNull()[0].getDescription(), is("bazar"));
+        assertThat(tracker.getAll().get(0).getName(), is("fan"));
+        assertThat(tracker.getAll().get(0).getDescription(), is("bazar"));
     }
 }

@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import static org.hamcrest.core.Is.is;
@@ -17,10 +18,12 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         tracker.add(firstItem);
         tracker.add(secondItem);
-        String id = tracker.getAll()[1].getId();
+
+        String id = tracker.getAll().get(1).getId();
         Item newItem = new Item("bazaa", "lol");
         tracker.replace(id, newItem);
-        assertThat(tracker.getAllNotNull()[1].getName(), is("bazaa"));
+
+        assertThat(tracker.getAll().get(1).getName(), is("bazaa"));
     }
 
     @Test
@@ -32,9 +35,10 @@ public class TrackerTest {
         tracker.add(firstItem);
         tracker.add(secondItem);
         tracker.add(thirdItem);
-        assertThat(tracker.getAll()[1].getId(), is(secondItem.getId()));
+
+        assertThat(tracker.getAll().get(1).getId(), is(secondItem.getId()));
         tracker.delete(secondItem.getId());
-        assertThat(tracker.getAll()[1].getId(), is(thirdItem.getId()));
+        assertThat(tracker.getAll().get(1).getId(), is(thirdItem.getId()));
     }
 
     @Test
@@ -48,10 +52,11 @@ public class TrackerTest {
         tracker.add(secondItem);
         tracker.add(thirdItem);
         tracker.add(fourthItem);
-        Item[] result = tracker.findByName("foo");
-        assertThat(result.length, is(2));
-        assertThat(result[0].getDescription(), is("foof"));
-        assertThat(result[1].getDescription(), is("baz"));
+
+        ArrayList<Item> result = tracker.findByName("foo");
+        assertThat(result.size(), is(2));
+        assertThat(result.get(0).getDescription(), is("foof"));
+        assertThat(result.get(1).getDescription(), is("baz"));
     }
 
     @Test

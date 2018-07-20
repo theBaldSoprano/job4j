@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface Input {
     /**
@@ -11,5 +12,5 @@ public interface Input {
      */
     String ask(String question);
 
-    int ask(String question, int[] range);
+    int ask(String question, List<Integer> range);
 }

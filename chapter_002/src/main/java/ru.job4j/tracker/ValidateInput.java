@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 public class ValidateInput implements Input {
     private final Input input;
 
@@ -13,7 +15,7 @@ public class ValidateInput implements Input {
     }
 
     @Override
-    public int ask(String question, int[] range) {
+    public int ask(String question, List<Integer> range) {
         boolean invalid = true;
         int result = -1;
         do {
